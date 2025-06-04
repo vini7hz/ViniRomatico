@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vnzada, O ultimo romantico 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #ffdde1, #ff9de2, #ffc3a0, #ffaad4);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive;
+      position: relative;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: white;
+      padding: 70px 50px;
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      max-width: 550px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #ff3385;
+      margin-bottom: 30px;
+      font-size: 2.4em;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.2em;
+    }
+
+    button {
+      padding: 14px 30px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.3s;
+      margin: 12px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+
+    #sim {
+      background-color: #ff3385;
+      color: white;
+    }
+
+    #sim:hover {
+      background-color: #e62e75;
+      transform: scale(1.15);
+    }
+
+    #nao {
+      background-color: #ccc;
+      color: #333;
+      position: absolute;
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      color: #ff66a3;
+      animation: cair 7s linear infinite;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.9;
+      top: -100px;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quer namorar comigo? 💖</h1>
+    <button id="sim" onclick="aceitou()">SIM 😍</button>
+    <button id="nao">NÃO 😝</button>
+  </div>
+
+  <script>
+    const botaoNao = document.getElementById('nao');
+    const container = document.querySelector('.container');
+
+    function moverBotao() {
+      const containerRect = container.getBoundingClientRect();
+      const maxX = containerRect.width - botaoNao.offsetWidth - 30;
+      const maxY = containerRect.height - botaoNao.offsetHeight - 30;
+
+      const novaPosicaoX = Math.random() * maxX;
+      const novaPosicaoY = Math.random() * maxY;
+
+      botaoNao.style.left = novaPosicaoX + 'px';
+      botaoNao.style.top = novaPosicaoY + 'px';
+    }
+
+    botaoNao.addEventListener('mouseover', moverBotao); // PC
+    botaoNao.addEventListener('touchstart', moverBotao); // Celular
+
+    function aceitou() {
+      container.innerHTML = `
+        <h1>💖 Aaaaaaawn, EU SABIA!!! 💖</h1>
+        <p>
+          Você acabou de fazer a pessoa mais feliz do mundo! 🥰❤️<br><br>
+          Prometo te encher de amor, carinho, cuidado, risadas e muitos momentos incríveis ao seu lado. 💘✨<br><br>
+          Te amo infinitooo! 😍💕
+          </br>
+          ass: viniDu7
+        </p>
+      `;
+    }
+
+    // Corações caindo
+    function criarCoracao() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '💖';
+
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 40 + 30) + 'px'; // Corações maiores
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's'; // Cai mais suave e devagar
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(criarCoracao, 250);
+  </script>
+</body>
+</html>
