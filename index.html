@@ -16,13 +16,15 @@
       background: linear-gradient(-45deg, #ffdde1, #ff9de2, #ffc3a0, #ffaad4);
       background-size: 400% 400%;
       animation: gradient 10s ease infinite;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       font-family: 'Comic Sans MS', cursive;
       position: relative;
+      padding: 50px 0;
     }
 
     @keyframes gradient {
@@ -80,6 +82,19 @@
       position: absolute;
     }
 
+    img {
+      width: 250px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
     /* Corações caindo */
     .heart {
       position: fixed;
@@ -130,20 +145,30 @@
     botaoNao.addEventListener('touchstart', moverBotao); // Celular
 
     function aceitou() {
-  container.innerHTML = `
-    <h1>💖 Aaaaaaawn, EU SABIA!!! 💖</h1>
-    <p>
-      Te espero dia 14/06! 🥰❤️<br><br>
-      📍 Localização: Casa do Vini (Estevão Caetano Rita, 366) ✨<br><br>
-      Leve Proteção!!! 😍💕<br>
-    </p>
-    <br>
-    <h2> ESSE DE BAIXO JA ACEITOU</h2>
-    <img src="image.png" alt="Imagem Fofa" style="width: 250px; border-radius: 20px; margin-top: 20px;">
-    <br>
-      Ass: viniDu7
-  `;
-}
+      container.innerHTML = `
+        <h1>💖 Aaaaaaawn, EU SABIA!!! 💖</h1>
+        <p>
+          Te espero dia 14/06! 🥰❤️<br><br>
+          📍 Localização: Casa do Vini (Estevão Caetano Rita, 366) ✨<br><br>
+          Leve Proteção!!! 😍💕<br>
+        </p>
+        <br>
+        <h2>ESSES QUE ESTÃO EM BAIXO JÁ ACEITARAM</h2>
+        <img src="image1.png" alt="Imagem Fofa">
+        <br>
+        <img src="image2.png" alt="Imagem Fofa">
+        <br>
+        <img src="image3.png" alt="Imagem Fofa">
+        <br>
+        <img src="image4.png" alt="Imagem Fofa">
+        <br>
+        <img src="image5.png" alt="Imagem Fofa">
+        <br>
+        <img src="image6.png" alt="Imagem Fofa">
+        <br>
+        Ass: viniDu7
+      `;
+    }
 
     // Corações caindo
     function criarCoracao() {
@@ -152,8 +177,8 @@
       heart.innerText = '💖';
 
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (Math.random() * 40 + 30) + 'px'; // Corações maiores
-      heart.style.animationDuration = (Math.random() * 3 + 5) + 's'; // Cai mais suave e devagar
+      heart.style.fontSize = (Math.random() * 40 + 30) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
 
       document.body.appendChild(heart);
 
